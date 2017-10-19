@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<view class="content">
+  <!--显示当天的天气信息-->
+  <view class="info">
+    <!--城市名称 当前日期-->
+    <view class="city">{{weather.city}} ({{weather.today}})</view>
+    <!--当天温度-->
+    <view class="temp" >{{weather.wendu}}℃</view>
+    <!--感冒描述-->
+    <view class="weather">{{weather.ganmao}}</view>
+   <!-- <view class="ScrrenHeight">{{ScrrenHeight}}</view>      -->
+  </view> 
+
+  <!--最近五天天气信息-->
+  <view class="forecast" style="height:{{screenHeight*0.8}}px;">
+    <view class="next-day"  wx:key="{{index}}" wx:for="{{weather.forecast}}" >
+      <!--日期-->
+      <view class="detail date">{{item.date}}</view>
+      <!--天气类型-->
+      <view class="detail">{{item.type}}</view>
+      <!--最高温度-->
+      <view class="detail">{{item.high}}</view>
+      <!--最低温度-->
+      <view class="detail">{{item.low}}</view>
+      <!--风向-->
+      <view class="detail">{{item.fengxiang}}</view>
+      <!--风力-->
+      <view class="detail">{{item.fengli}}</view>
+    </view>
+  </view>  
+
+  <!--搜索-->
+  <view class="search-area"> 
+    <input bindinput="bindKeyInput" placeholder="请输入城市名称" 
+        value="{{inputCity}}"  />
+    <button type="primary" size="mini" bindtap="bindSearch">查询</button>
+  </view>
+</view>
